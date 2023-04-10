@@ -10,7 +10,7 @@ server:  nodemon server.js----http://localhost:8000/
 
 
 
-#all functionalities are working:
+#all functionalities are working from backend to frontend:
 
 # Landing-page
 
