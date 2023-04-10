@@ -1,7 +1,7 @@
 # PropVR-Assignment
 
 
-# Deployed Link-https://mellow-lolly-48a12b.netlify.app/
+# Deployed Link-https://propvr-assignment-86ed9e.netlify.app/
 
 #step-1: First npm install in both client and server
 client:   http://localhost:3000/
