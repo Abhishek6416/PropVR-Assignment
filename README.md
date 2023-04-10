@@ -12,7 +12,6 @@ server:http://localhost:8800/
 
 #all functionalities are working:
 
-#Login Page::
 
 
 
