@@ -1,9 +1,12 @@
-const mongoose=require("mongoose")
-mongoose.set('strictQuery', true);
+const mongoose = require("mongoose")
 
-let connection=async()=>
-{
-    await mongoose.connect("mongodb://127.0.0.1:27017/propvr")
+const connectDataBase = async ()=>{
+    try {
+        await mongoose.connect(process.env.MONGO_URI,{useNewUrlParser: true, useUnifiedTopology: true});
+        console.log('CONNECTED TO ATLAS SUCCESSFULLY')
+    } catch (error) {
+        console.log(`Error while connecting ATLAS: ${error.message}`)
+    }
 }
 
-module.exports=connection;
+module.exports = connectDataBase;
