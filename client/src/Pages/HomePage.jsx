@@ -1,57 +1,59 @@
-import React from "react";
 import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Text,
   Box,
   Container,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
 } from "@chakra-ui/react";
+import React from "react";
 import Login from "../Components/Authentication/Login";
-import SignUp from "../Components/Authentication/SignUp";
+import Signup from "../Components/Authentication/Signup";
 
 const HomePage = () => {
   return (
-    <Container maxW={"xl"} centerContent>
+    <Container maxW={'xl'} centerContent>
       <Box
         display={'flex'}
         justifyContent={'center'}
         padding={3}
         backgroundColor={"white"}
         width={'100%'}
-        margin={'40px 0px 15px 0px'}
+        margin={'70px 0px 15px 0px'}
         borderRadius={'lg'}
         borderWidth={'1px'}
       >
         <Text
           textAlign={"center"}
           fontSize={"4xl"}
-          fontFamily={"Work sans"}
+          // fontFamily={"Work sans"} 
           color={"black"}
         >
-          Task Planner
+          Team Management App
         </Text>
       </Box>
       <Box
-        backgroundColor={"white"}
+        padding={3}
         width={"100%"}
-        padding={4}
+        m={"0px 0px 80px 0px"}
+        p={4}
         borderRadius={"lg"}
         borderWidth={"1px"}
+        
       >
-        <Tabs variant="soft-rounded">
-          <TabList mb={"1em"}>
+        <Tabs variant="soft-rounded" colorScheme="blue">
+          <TabList>
             <Tab w={"50%"}>Login</Tab>
-            <Tab w={"50%"}>SignUp</Tab>
+            <Tab w={"50%"}>Signup</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
               <Login />
             </TabPanel>
             <TabPanel>
-              <SignUp/>
+              <Signup/>
             </TabPanel>
           </TabPanels>
         </Tabs>
