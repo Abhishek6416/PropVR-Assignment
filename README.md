@@ -4,7 +4,7 @@
 # Deployed Link-https://mellow-lolly-48a12b.netlify.app/
 
 #step-1: First npm install in both client and server
-client:http://localhost:3000/
+client:   http://localhost:3000/
 
 server:  nodemon server.js----http://localhost:8000/
 
