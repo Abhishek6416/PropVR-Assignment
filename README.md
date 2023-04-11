@@ -1,16 +1,16 @@
 # PropVR-Assignment
 
 
-# Deployed Link-https://mellow-lolly-48a12b.netlify.app/
+# Deployed Link-https://propvr-assignment-86ed9e.netlify.app/
 
 #step-1: First npm install in both client and server
-client:http://localhost:3000/
+client:   http://localhost:3000/
 
-server:http://localhost:8800/
+server:  nodemon server.js----http://localhost:8000/
 
 
 
-#all functionalities are working:
+#all functionalities are working from backend to frontend:
 
 # Landing-page
 
