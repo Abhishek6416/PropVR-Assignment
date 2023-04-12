@@ -1,7 +1,8 @@
 # PropVR-Assignment
 
 
-# Deployed Link-https://propvr-assignment-86ed9e.netlify.app/
+# Deployed FrontEnd Link-https://propvr-frontend-4cc323.netlify.app/
+# Backend deployed link-https://propvr-backend-production.up.railway.app/
 
 #step-1: First npm install in both client and server
 client:   http://localhost:3000/
