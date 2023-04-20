@@ -28,13 +28,12 @@ const ProjectTableBody = ({ data }) => {
       <Td>
         <AiOutlineStar size={"1.8rem"} color="gray" />
       </Td>
-      <Td onClick={()=>setSelectedProject(data)} className="HoverUnderline"><Link to={`/projects/${data._id}`}>{name}</Link></Td>
+      <Td onClick={()=>setSelectedProject(data)} className="HoverUnderline"><Link to={`/projects/${data._id}`}><Tooltip label="Click to Open Project" hasArrow placement='bottom'  bg='gray.300' color={'black'}>{name}</Tooltip></Link></Td>
       <Td>
       <Tooltip hasArrow label={owner.name} placement='bottom'  bg='gray.300' color={'black'}>
         <Avatar
           name={owner.name}
           size={"sm"}
-          //   src={'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}
         />
         </Tooltip>
       </Td>
@@ -52,7 +51,7 @@ const ProjectTableBody = ({ data }) => {
             <CreateTaskModal>
             <MenuItem onClick={()=>setSelectedProject(data)}>Create Task</MenuItem>
             </CreateTaskModal>
-            <MenuItem>Add User</MenuItem>
+            {/* <MenuItem>Add User</MenuItem> */}
           </MenuList>
         </Menu>
       </Td>

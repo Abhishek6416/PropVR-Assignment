@@ -1,6 +1,5 @@
 const express = require("express")
 const dotenv = require("dotenv");
-// const connection = require("./config/database");
 const connectDataBase = require("./config/database");
 const cors = require('cors')
 const userRoutes= require("./routes/userRoutes")
@@ -17,10 +16,9 @@ app.use('/user',userRoutes);
 app.use('/projects',projectRoutes);
 app.use('/tasks',taskRoutes);
 
-
 connectDataBase();
 app.get("/", (req, res) => {
-    res.send("BackendAPI is running..");
+    res.send("API is running..");
   });   
 const PORT = process.env.PORT || 8000;
 app.listen(PORT,()=>{

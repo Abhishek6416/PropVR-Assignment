@@ -1,4 +1,5 @@
-.projectTableContainer::-webkit-scrollbar{
+
+.hideScroll::-webkit-scrollbar{
     display: none;
 }
 .noProjectImage{

@@ -25,21 +25,18 @@ import UserBadgeItem from "../misc/UserBadgeItem";
 // import UserListItem from "../misc/UserListItem";
 
 const CreateProjectModal = ({ children }) => {
+  const { user, setFetchAgain, fetchAgain, selectedProject } =useContext(AppContext);
   const [projectName, setProjectName] = useState();
   const [description, setDescription] = useState();
   const [dueDate, setDueData] = useState();
-  const [startDate, setStartDate] = useState();
   const [status, setStatus] = useState();
-  const [loading, setLoading] = useState(false);
-  const [team, setTeam] = useState([]);
+  const [team, setTeam] = useState([user]);
   const [searchResult, setSearchResult] = useState();
-  const [search, setSearch] = useState();
+  const [loading,setLoading] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
-  const { user, setFetchAgain, fetchAgain, selectedProject } =
-    useContext(AppContext);
 
   const handleSearch = async (query) => {
     if (!query) {
@@ -57,10 +54,11 @@ const CreateProjectModal = ({ children }) => {
         `${API_LINK}/user?search=${query}`,
         config
       );
-      console.log(data);
-      setLoading(false);
+      // console.log(data);
       setSearchResult(data);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       toast({
         title: "Error Occured!",
         description: error.message,
@@ -73,26 +71,27 @@ const CreateProjectModal = ({ children }) => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     if (!projectName || !description || !dueDate) {
       toast({
         title: "Please Fill all Fields",
         status: "error",
         duration: 4000,
         isClosable: true,
-        position: "top",
+        position: "top-right",
       });
+      setLoading(false);
       return;
     }
 
     try {
+      
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      if(!team.includes(user)){
-        setTeam([...team,user]);
-      }
+        
       const { data } = await axios.post(
         `${API_LINK}/projects`,
         {
@@ -111,9 +110,11 @@ const CreateProjectModal = ({ children }) => {
         status: "success",
         duration: 4000,
         isClosable: true,
-        position: "bottom",
+        position: "top-right",
       });
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log(error)
       toast({
         title: "Failed to Create new project!",
@@ -121,7 +122,7 @@ const CreateProjectModal = ({ children }) => {
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom",
+        position: "top-right",
       });
     }
   };
@@ -139,6 +140,7 @@ console.log(team)
       });
       return;
     }
+    
     setTeam([...team, userToAdd]);
   };
 
@@ -198,7 +200,7 @@ console.log(team)
             </FormControl>
             <FormControl>
               <Input
-                placeholder="Add team members "
+                placeholder="Add team members to eg: sushant etc"
                 mb="3"
                 onChange={(e) => {
                   handleSearch(e.target.value);
@@ -219,6 +221,7 @@ console.log(team)
               <Spinner />
             ) : (
               searchResult?.slice(0, 4).map((elem) => {
+                if(elem._id!==user._id)
                 return (
                   <UserListItem
                     key={elem._id}
@@ -231,7 +234,7 @@ console.log(team)
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" onClick={handleSubmit}>
+            <Button isLoading={loading} colorScheme="blue" onClick={handleSubmit}>
               Create Project
             </Button>
           </ModalFooter>
